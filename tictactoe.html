@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+	<title>TIC TAC TOE</title>
+	<style>
+		button
+		{
+			color: white;
+			background-color: black;
+			height: 250px;
+			width: 250px;
+			font-size: 70px;
+			border: 1px solid #DDD;
+			cursor: pointer;
+		}
+		div
+		{
+			height: 4px;
+		}
+		body
+		{
+			background-color: black;
+			color:red;
+			margin-left: 500px;
+		}
+		p
+		{
+			margin-left: 325px;
+			font-size: 60px;
+		}
+	</style>
+	<script>
+		var ob = 0;
+		var gra = 0;
+		var tab = [];
+		var pktX = 0;
+		var pktY = 0;
+		for (var i = 1 ; i <= 9 ; i++)
+				tab[i] = 0;
+		function reset()
+		{
+			for (var i = 1 ; i <= 9 ; i++)
+			{
+				tab[i] = 0;
+				var pole = document.getElementById(i);
+				pole.innerHTML = "";
+			}
+			gra++;
+			ob = gra;
+			var pole = document.getElementById("WYNIK");
+			pole.innerHTML = pktX + " : " + pktY;
+		}
+		function pokaz(wartosc)
+		{
+			if(tab[wartosc] != 0)
+			{
+				return ;
+			}
+			var pole = document.getElementById(wartosc);
+			var mod = ob % 2;
+			if (mod == 0)
+			{
+				pole.innerHTML = "O";
+				tab[wartosc] = -1;
+			}
+			else
+			{
+				pole.innerHTML = "X";
+				tab[wartosc] = 1;
+			}
+			ob++;
+			sprawdz();
+		}
+		function XD(start,moc,skok)
+		{
+			var St = start;
+			for(var klk = 1 ; klk <= 3 ; klk++)
+			{
+				start = St + (klk-1) * moc;
+				var suma = 0;
+				for(var il = 1 ; il <= 3 ; il++)
+				{
+					suma += tab[start + (il-1) * skok];
+				}
+				if(suma == 3)
+				{
+					pktX++;
+					reset();
+				}
+				if(suma == -3)
+				{
+					pktY++;
+					reset();
+				}
+			}
+		}
+		function sprawdz()
+		{
+			XD(1,1,3);
+			XD(1,3,1);
+			XD(1,10,4);
+			XD(3,10,2);
+			if(ob == gra + 9)
+			{
+				reset();
+			}
+		}
+	</script>
+</head>
+
+<body>
+		<button  id="1" onclick="pokaz(this.id)"></button>
+		<button  id="2" onclick="pokaz(this.id)"></button>
+		<button  id="3" onclick="pokaz(this.id)"></button>
+		<p></p>
+		<button  id="4" onclick="pokaz(this.id)"></button>
+		<button  id="5" onclick="pokaz(this.id)"></button>
+		<button  id="6" onclick="pokaz(this.id)"></button>
+		<p></p>
+		<button  id="7" onclick="pokaz(this.id)"></button>
+		<button  id="8" onclick="pokaz(this.id)"></button>
+		<button  id="9" onclick="pokaz(this.id)"></button>
+		<p></p>
+		<p id = "WYNIK">0 : 0 </p>
+</body>
