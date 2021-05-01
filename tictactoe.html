@@ -24,8 +24,10 @@
 		}
 		p
 		{
-			margin-left: 325px;
+			margin-left: 235px;
+			margin-right: auto;
 			font-size: 60px;
+			position: relative;
 		}
 	</style>
 	<script>
@@ -34,20 +36,19 @@
 		var tab = [];
 		var pktX = 0;
 		var pktY = 0;
-		for (var i = 1 ; i <= 9 ; i++)
-				tab[i] = 0;
 		function reset()
 		{
 			for (var i = 1 ; i <= 9 ; i++)
 			{
 				tab[i] = 0;
 				var pole = document.getElementById(i);
-				pole.innerHTML = "";
+				pole.innerHTML = "Z";
+				pole.style.color = "black";
 			}
 			gra++;
 			ob = gra;
 			var pole = document.getElementById("WYNIK");
-			pole.innerHTML = pktX + " : " + pktY;
+			pole.innerHTML = "Wynik " + pktX + " : " + pktY;
 		}
 		function pokaz(wartosc)
 		{
@@ -60,11 +61,13 @@
 			if (mod == 0)
 			{
 				pole.innerHTML = "O";
+				pole.style.color = "white";
 				tab[wartosc] = -1;
 			}
 			else
 			{
 				pole.innerHTML = "X";
+				pole.style.color = "white";
 				tab[wartosc] = 1;
 			}
 			ob++;
@@ -107,7 +110,7 @@
 	</script>
 </head>
 
-<body>
+<body onload="reset()">
 		<button  id="1" onclick="pokaz(this.id)"></button>
 		<button  id="2" onclick="pokaz(this.id)"></button>
 		<button  id="3" onclick="pokaz(this.id)"></button>
