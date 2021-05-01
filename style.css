@@ -1,0 +1,27 @@
+		button
+		{
+			color: white;
+			background-color: black;
+			height: 250px;
+			width: 250px;
+			font-size: 70px;
+			border: 1px solid #DDD;
+			cursor: pointer;
+		}
+		div
+		{
+			height: 4px;
+		}
+		body
+		{
+			background-color: black;
+			color:red;
+			margin-left: 500px;
+		}
+		p
+		{
+			margin-left: 235px;
+			margin-right: auto;
+			font-size: 60px;
+			position: relative;
+		}
